@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person';
+import Persons from '../components/Persons';
 
 class App extends Component {
   state = {
+    showPersons: false,
     persons: [
       { name: "Nancy", age: "27", hobbies: ["Racing"] },
       { name: "Peter", age: "18" },
@@ -11,14 +12,10 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = (newName) => {
-    this.setState({
-      persons: [
-        { name: "Victor", age: "27", hobbies: ["Racing"] },
-        { name: newName, age: "18" },
-        { name: "Abcde", age: "12" }
-      ]
-    });
+  togglePersons = () => {
+    this.setState((prevState) => ({
+      showPersons: !prevState.showPersons
+    }));
   }
 
   onChangeHandler = (event) => {
@@ -32,19 +29,21 @@ class App extends Component {
   }
 
   render() {
-    const persons = this.state.persons.map(
-      (person) => <Person
-        name={person.name}
-        age={person.age}
-        changed={this.onChangeHandler}
-      >
-        {person.hobbies}
-      </Person >
-    );
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.onChangeHandler}
+        />
+      );
+    }
 
     return (
       <div className="App">
-        <button onClick={this.switchNameHandler.bind(this, "Anonimous")}>Switch Name</button>
+        <button onClick={this.togglePersons.bind(this)}>Toggle Persons</button>
         {persons}
       </div>
     );
