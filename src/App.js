@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons: [
+      { name: "Nancy", age: "27", hobbies: ["Racing"] },
+      { name: "Peter", age: "18" },
+      { name: "Dan", age: "12" }
+    ]
+  }
+
+  switchNameHandler = (newName) => {
+    // TODO: updated the state 
+  }
+
   render() {
+    const persons = this.state.persons.map(
+      (person) => <Person name={person.name} age={person.age}>{person.hobbies}</Person>
+    );
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+        {persons}
       </div>
     );
   }
