@@ -1,0 +1,16 @@
+.Cockpit {
+    text-align: center;
+}
+
+.Cockpit button {
+    border: 1px solid burlywood;
+    background-color: cornsilk;
+}
+
+.Cockpit button:hover {
+    background-color: burlywood;
+}
+
+.selected {
+    background-color: orange;
+}

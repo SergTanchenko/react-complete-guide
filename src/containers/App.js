@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Persons from '../components/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -49,7 +50,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <button onClick={this.togglePersons.bind(this)}>Toggle Persons</button>
+        <Cockpit clicked={this.togglePersons.bind(this)} isClicked={this.state.showPersons} />
         {persons}
       </div>
     );
