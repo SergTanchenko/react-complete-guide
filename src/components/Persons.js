@@ -3,7 +3,8 @@ import Person from "./Person/Person"
 
 const persons = (props) => props.persons.map(
     (person, index) => <Person
-        click={() => props.clicked}
+        key={person.id}
+        clicked={() => props.clicked(index)}
         name={person.name}
         age={person.age}
         changed={(event) => props.changed(event, person.id)}

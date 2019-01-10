@@ -6,9 +6,9 @@ class App extends Component {
   state = {
     showPersons: false,
     persons: [
-      { name: "Nancy", age: "27", hobbies: ["Racing"] },
-      { name: "Peter", age: "18" },
-      { name: "Dan", age: "12" }
+      { id: "qwe1", name: "Nancy", age: "27", hobbies: ["Racing"] },
+      { id: "qw2", name: "Peter", age: "18" },
+      { id: "q3", name: "Dan", age: "12" }
     ]
   }
 
@@ -18,12 +18,18 @@ class App extends Component {
     }));
   }
 
+  deletePersonHandler = (indexToDelete) => {
+    const persons = [...this.state.persons];
+    persons.splice(indexToDelete, 1);
+    this.setState({ persons });
+  }
+
   onChangeHandler = (event) => {
     this.setState({
       persons: [
-        { name: "Victor", age: "27", hobbies: ["Racing"] },
-        { name: event.target.value, age: "18" },
-        { name: "Abcde", age: "12" }
+        { id: "qwe1", name: "Victor", age: "27", hobbies: ["Racing"] },
+        { id: "qw2", name: event.target.value, age: "18" },
+        { id: "q3", name: "Abcde", age: "12" }
       ]
     });
   }
